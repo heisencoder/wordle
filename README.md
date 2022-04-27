@@ -8,7 +8,7 @@ These words were taken directly from the JavaScript used by the game itself.
 
 The file [solutions.txt](solutions.txt) contains just the possible solutions, formatted as one word per line. 
 
-Similarly, the file [guesses.txt][guesses.txt] contains all the other words that wordle allows as a valid guess.
+Similarly, the file [guesses.txt](guesses.txt) contains all the other words that wordle allows as a valid guess.
 
 ## Statistics
 
