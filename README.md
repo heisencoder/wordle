@@ -47,7 +47,7 @@ q:  1.26%
 j:  1.17%
 ```
 
-This distribution is in a slightly different order than standard English words of any length (which roughly follow the order "etaoin shrdlu" for the first 10 characters).
+This distribution is in a slightly different order than standard English words of any length (which roughly follow the order "etaoin shrdlu" for the first 12 characters).
 
 ### Letter usage in guesses.txt
 
