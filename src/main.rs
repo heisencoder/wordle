@@ -2,6 +2,7 @@
 
 use std::fs::File;
 use std::io::{self, BufRead};
+use std::collections::HashMap;
 
 
 fn load_words(filename: &str) -> Result<Vec<String>, io::Error> {
@@ -14,6 +15,25 @@ fn load_words(filename: &str) -> Result<Vec<String>, io::Error> {
     Ok(words)
 }
 
+fn letter_freq(words: &Vec<String>) -> HashMap<char, usize> {
+    let mut freq = HashMap::<char, usize>::new();
+
+    for word in words {
+        for c in word.chars() {
+            freq.insert(c, freq.get(&c).unwrap_or(&0) + 1);
+        }
+    }
+
+    freq
+}
+
+#[test]
+fn test_letter_freq() {
+   let freqs = letter_freq(&vec!["irate".to_string(), "abate".to_string()]);
+   assert_eq!(freqs, HashMap::from([('e', 1)]));
+}
+
 fn main() {
-    println!("{:?}", load_words("solutions.txt").expect("error"));
+    let words = load_words("solutions.txt").expect("load_words");
+    letter_freq(&words);
 }
