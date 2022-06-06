@@ -2,7 +2,7 @@
 
 use std::fs::File;
 use std::io::{self, BufRead};
-use std::collections::HashMap;
+use std::collections::BTreeMap;
 
 
 fn load_words(filename: &str) -> Result<Vec<String>, io::Error> {
@@ -15,8 +15,8 @@ fn load_words(filename: &str) -> Result<Vec<String>, io::Error> {
     Ok(words)
 }
 
-fn letter_freq(words: &Vec<String>) -> HashMap<char, usize> {
-    let mut freq = HashMap::<char, usize>::new();
+fn letter_freq(words: &Vec<String>) -> BTreeMap<char, usize> {
+    let mut freq = BTreeMap::<char, usize>::new();
 
     for word in words {
         for c in word.chars() {
@@ -30,10 +30,17 @@ fn letter_freq(words: &Vec<String>) -> HashMap<char, usize> {
 #[test]
 fn test_letter_freq() {
    let freqs = letter_freq(&vec!["irate".to_string(), "abate".to_string()]);
-   assert_eq!(freqs, HashMap::from([('e', 1)]));
+   assert_eq!(freqs, BTreeMap::from([
+       ('a', 3),
+       ('b', 1),
+       ('e', 2),
+       ('i', 1),
+       ('r', 1),
+       ('t', 2),
+   ]));
 }
 
 fn main() {
     let words = load_words("solutions.txt").expect("load_words");
-    letter_freq(&words);
+    print!("{:?}", letter_freq(&words));
 }
